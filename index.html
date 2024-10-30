@@ -31,6 +31,54 @@
                 <a class="btn btn-full" href="#">I’m hungry</a>
                 <a class="btn btn-ghost" href="#">Show me more</a>
             </div>
+            <style>
+  /* Style for the modal background */
+  .modal-overlay4 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: visible;
+    z-index: 1000;
+  }
+
+  /* Style for the modal box */
+  .modal-content4 {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Style for the close button */
+  .close-btn4 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  /* CSS to prevent scrolling */
+  .scroll-lock {
+    overflow: hidden;
+  }
+
+  /* Black text for modal heading and description */
+  .modal-content4 h2, .modal-content4 p {
+    color: black;
+  }
+</style>
         </header>
         
         <section class="section-features">
@@ -404,6 +452,41 @@
             </div>
             
         </footer>
+        <div class="modal-overlay4" id="modal4">
+  <div class="modal-content4">
+    <button class="close-btn4" id="close-btn4">X</button>
+    <h2>Welcome to <br> Omnifoods</h2>
+    <p>We’re your new premium food delivery service. We know you’re always busy. No time for cooking. So let us take care of that, we’re really good at it, we promise!</p>
+  </div>
+      <script>
+  // Get the modal and close button elements
+  const modal = document.getElementById('modal4');
+  const closeButton = document.getElementById('close-btn4');
+  const modalContent = document.querySelector('.modal-content4');
+
+  // Disable scrolling on body when modal is visible
+  document.body.classList.add('scroll-lock');
+
+  // Function to close the modal and enable scrolling
+  function closeModal() {
+    modal.style.visibility = 'hidden';
+    document.body.classList.remove('scroll-lock');
+  }
+
+  // Close the modal if the close button is clicked
+  closeButton.addEventListener('click', closeModal);
+
+  // Close the modal if user clicks on the modal background (overlay)
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close the modal if user clicks on the modal body (content area)
+  modalContent.addEventListener('click', closeModal);
+</script>      
+</div>
     </body>
  
 </html>
